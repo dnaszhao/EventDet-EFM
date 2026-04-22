@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "vis_pred Gen1 Best CKPT",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/vis_pred.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "python": "C:\\Users\\root\\.conda\\envs\\myenv\\python.exe",
+            "args": [
+                "model=rnndet",
+                "dataset=gen1",
+                "dataset.path=./datasets/gen1/",
+                "checkpoint=./checkpoint/rnndet_tiny-gen1-bs1_iter400k/models/epoch_001-step_81756-val_AP_0.1270.ckpt",
+                "+experiment/gen1=tiny_win3060.yaml",
+                "model.postprocess.confidence_threshold=0.1",
+                "num_video=3",
+                "vis_sequence_length=160",
+                "reverse=False"
+            ]
+        }
+    ]
+}

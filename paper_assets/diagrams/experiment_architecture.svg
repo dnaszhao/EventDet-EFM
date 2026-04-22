@@ -1,0 +1,135 @@
+<svg width="1500" height="900" viewBox="0 0 1500 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f5ef"/>
+      <stop offset="100%" stop-color="#eef3f8"/>
+    </linearGradient>
+    <linearGradient id="dataGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d7eadf"/>
+      <stop offset="100%" stop-color="#c4dfd0"/>
+    </linearGradient>
+    <linearGradient id="modelGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d7e6f5"/>
+      <stop offset="100%" stop-color="#c4d9ef"/>
+    </linearGradient>
+    <linearGradient id="trainGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4e1cf"/>
+      <stop offset="100%" stop-color="#efd3b5"/>
+    </linearGradient>
+    <linearGradient id="outGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ead8d8"/>
+      <stop offset="100%" stop-color="#e5c5c5"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#9aa6b2" flood-opacity="0.25"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6f82"/>
+    </marker>
+    <style>
+      .title { font: 700 34px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #243444; }
+      .subtitle { font: 500 18px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #4f6275; }
+      .colhead { font: 700 24px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #243444; }
+      .boxhead { font: 700 20px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #243444; }
+      .boxtext { font: 500 17px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #33475b; }
+      .note { font: 600 18px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #34495d; }
+      .small { font: 500 15px 'Microsoft YaHei', 'Noto Sans SC', sans-serif; fill: #5c6f82; }
+      .line { stroke: #5c6f82; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #7f8fa1; stroke-width: 3; fill: none; stroke-dasharray: 10 8; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1500" height="900" fill="url(#bg)"/>
+
+  <text x="750" y="58" text-anchor="middle" class="title">事件视觉目标检测实验总体架构</text>
+  <text x="750" y="92" text-anchor="middle" class="subtitle">Gen1 数据集 + RNNDet tiny + 本地 RTX 3060 单卡训练与验证流程</text>
+
+  <rect x="50" y="130" width="420" height="630" rx="28" fill="#f9fbfd" stroke="#c8d4df" stroke-width="2"/>
+  <rect x="540" y="130" width="420" height="630" rx="28" fill="#f9fbfd" stroke="#c8d4df" stroke-width="2"/>
+  <rect x="1030" y="130" width="420" height="630" rx="28" fill="#f9fbfd" stroke="#c8d4df" stroke-width="2"/>
+
+  <text x="260" y="175" text-anchor="middle" class="colhead">数据与输入构建</text>
+  <text x="750" y="175" text-anchor="middle" class="colhead">模型与训练主链路</text>
+  <text x="1240" y="175" text-anchor="middle" class="colhead">验证、可视化与结果输出</text>
+
+  <rect x="85" y="210" width="350" height="105" rx="24" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="260" y="248" text-anchor="middle" class="boxhead">Gen1 事件视觉目标检测数据集</text>
+  <text x="260" y="280" text-anchor="middle" class="boxtext">训练序列、验证序列与测试序列</text>
+  <text x="260" y="304" text-anchor="middle" class="boxtext">目标类别：car / pedestrian</text>
+
+  <rect x="85" y="345" width="350" height="105" rx="24" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="260" y="383" text-anchor="middle" class="boxhead">弱监督实验配置</text>
+  <text x="260" y="415" text-anchor="middle" class="boxtext">dataset = gen1x0.01_ss</text>
+  <text x="260" y="439" text-anchor="middle" class="boxtext">1% 标注比例 + 验证子集加速</text>
+
+  <rect x="85" y="480" width="350" height="115" rx="24" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="260" y="518" text-anchor="middle" class="boxhead">事件表示构建</text>
+  <text x="260" y="550" text-anchor="middle" class="boxtext">stacked_histogram_dt=50_nbins=10</text>
+  <text x="260" y="574" text-anchor="middle" class="boxtext">输入分辨率 240×304</text>
+
+  <rect x="85" y="625" width="350" height="105" rx="24" fill="url(#dataGrad)" filter="url(#shadow)"/>
+  <text x="260" y="663" text-anchor="middle" class="boxhead">序列采样与输入组织</text>
+  <text x="260" y="695" text-anchor="middle" class="boxtext">训练序列长度 L = 21</text>
+  <text x="260" y="719" text-anchor="middle" class="boxtext">可视化序列长度可调</text>
+
+  <rect x="575" y="210" width="350" height="105" rx="24" fill="url(#modelGrad)" filter="url(#shadow)"/>
+  <text x="750" y="248" text-anchor="middle" class="boxhead">训练入口与配置组合</text>
+  <text x="750" y="280" text-anchor="middle" class="boxtext">train.py + Hydra 配置系统</text>
+  <text x="750" y="304" text-anchor="middle" class="boxtext">tiny_win3060.yaml</text>
+
+  <rect x="575" y="345" width="350" height="105" rx="24" fill="url(#modelGrad)" filter="url(#shadow)"/>
+  <text x="750" y="383" text-anchor="middle" class="boxhead">时序骨干网络</text>
+  <text x="750" y="415" text-anchor="middle" class="boxtext">MaxViTRNN-tiny</text>
+  <text x="750" y="439" text-anchor="middle" class="boxtext">递归状态建模 + 局部全局特征提取</text>
+
+  <rect x="575" y="480" width="350" height="105" rx="24" fill="url(#modelGrad)" filter="url(#shadow)"/>
+  <text x="750" y="518" text-anchor="middle" class="boxhead">特征融合与检测头</text>
+  <text x="750" y="550" text-anchor="middle" class="boxtext">PAFPN 多尺度融合</text>
+  <text x="750" y="574" text-anchor="middle" class="boxtext">YOLOX Head + NMS 后处理</text>
+
+  <rect x="575" y="625" width="350" height="105" rx="24" fill="url(#trainGrad)" filter="url(#shadow)"/>
+  <text x="750" y="663" text-anchor="middle" class="boxhead">训练优化与续训机制</text>
+  <text x="750" y="695" text-anchor="middle" class="boxtext">AdamW + OneCycleLR + AMP 16-bit</text>
+  <text x="750" y="719" text-anchor="middle" class="boxtext">自动恢复 latest checkpoint</text>
+
+  <rect x="1065" y="210" width="350" height="105" rx="24" fill="url(#outGrad)" filter="url(#shadow)"/>
+  <text x="1240" y="248" text-anchor="middle" class="boxhead">验证评估</text>
+  <text x="1240" y="280" text-anchor="middle" class="boxtext">val.py / validation loop</text>
+  <text x="1240" y="304" text-anchor="middle" class="boxtext">输出 val/AP、AP50、AR 等指标</text>
+
+  <rect x="1065" y="345" width="350" height="105" rx="24" fill="url(#outGrad)" filter="url(#shadow)"/>
+  <text x="1240" y="383" text-anchor="middle" class="boxhead">模型选择与保存</text>
+  <text x="1240" y="415" text-anchor="middle" class="boxtext">best checkpoint / last checkpoint</text>
+  <text x="1240" y="439" text-anchor="middle" class="boxtext">根据 val/AP 选择最优模型</text>
+
+  <rect x="1065" y="480" width="350" height="115" rx="24" fill="url(#outGrad)" filter="url(#shadow)"/>
+  <text x="1240" y="518" text-anchor="middle" class="boxhead">测试集可视化</text>
+  <text x="1240" y="550" text-anchor="middle" class="boxtext">vis_pred.py</text>
+  <text x="1240" y="574" text-anchor="middle" class="boxtext">预测视频、关键帧拼图、论文插图</text>
+
+  <rect x="1065" y="625" width="350" height="105" rx="24" fill="url(#outGrad)" filter="url(#shadow)"/>
+  <text x="1240" y="663" text-anchor="middle" class="boxhead">论文结果整理</text>
+  <text x="1240" y="695" text-anchor="middle" class="boxtext">量化指标、可视化图像、实验分析文本</text>
+  <text x="1240" y="719" text-anchor="middle" class="boxtext">形成论文实验章节材料</text>
+
+  <path d="M 260 315 L 260 345" class="line"/>
+  <path d="M 260 450 L 260 480" class="line"/>
+  <path d="M 260 595 L 260 625" class="line"/>
+
+  <path d="M 750 315 L 750 345" class="line"/>
+  <path d="M 750 450 L 750 480" class="line"/>
+  <path d="M 750 595 L 750 625" class="line"/>
+
+  <path d="M 1240 315 L 1240 345" class="line"/>
+  <path d="M 1240 450 L 1240 480" class="line"/>
+  <path d="M 1240 595 L 1240 625" class="line"/>
+
+  <path d="M 435 540 L 575 540" class="line"/>
+  <path d="M 925 540 L 1065 540" class="line"/>
+
+  <rect x="570" y="770" width="360" height="88" rx="22" fill="#fff7e6" stroke="#d1b989" stroke-width="2"/>
+  <text x="750" y="807" text-anchor="middle" class="note">硬件与实验约束</text>
+  <text x="750" y="835" text-anchor="middle" class="small">RTX 3060 Laptop GPU（6GB） / batch size = 1 / 单卡独占训练</text>
+
+  <path d="M 750 730 L 750 770" class="dash"/>
+</svg>
