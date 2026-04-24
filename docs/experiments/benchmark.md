@@ -1,6 +1,6 @@
 # Benchmark
 
-Please make sure you have downloaded the pre-trained weights following instructions in [install.md](https://github.com/Wuziyi616/LEOD/blob/main/docs/install.md#pre-trained-weights).
+Please make sure you have downloaded the pre-trained weights following instructions in [Installation Guide](../guides/install.md#pre-trained-weights).
 
 ## Evaluation
 
@@ -49,7 +49,7 @@ https://github.com/Wuziyi616/LEOD/assets/37072215/ae898b28-0b8a-4311-a9fd-6271ce
 
 ### Pre-train on data with limited annotations
 
-Make sure to understand the data splits used in this project described in [install.md](https://github.com/Wuziyi616/LEOD/blob/main/docs/install.md#data-splits).
+Make sure to understand the data splits used in this project described in [Installation Guide](../guides/install.md#data-splits).
 
 We follow RVT for most of the settings, e.g., batch size, learning rate.
 The biggest change we made is early stopping to prevent overfitting.
@@ -118,7 +118,7 @@ python val_dst.py model=pseudo_labeler dataset=gen4x0.01_ss \
 Since our pseudo labels are saved in the same format as real labels, the training commands are almost the same.
 You can simply copy an existing dataset config and change the path to the path of the pseudo dataset.
 Also remember to set `ratio` (WSOD) and `train_ratio` (SSOD) to -1, so that we use all the pseudo labels.
-We provide one such example at [gen1x0.01_ss-1round.yaml](../config/dataset/gen1x0.01_ss-1round.yaml).
+We provide one such example at [gen1x0.01_ss-1round.yaml](../../config/dataset/gen1x0.01_ss-1round.yaml).
 
 ```Bash
 # Gen1 （1 GPU, batch_size=8 per GPU)

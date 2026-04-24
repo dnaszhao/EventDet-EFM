@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - small
+
+model:
+  feature_enhancer:
+    enable: true
+    density_gate:
+      enable: true
+      kernel_size: 3
+    temporal_gate:
+      enable: true
+    multi_scale_fusion:
+      enable: true
+      channel_gate_reduction: 4
+      use_residual: true
+
+suffix: "-efm"

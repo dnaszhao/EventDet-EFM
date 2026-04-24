@@ -1,6 +1,6 @@
 # @package _global_
 defaults:
-  - tiny_win3060
+  - tiny
 
 model:
   feature_enhancer:

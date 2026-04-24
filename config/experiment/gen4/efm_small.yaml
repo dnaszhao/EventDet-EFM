@@ -1,6 +1,6 @@
 # @package _global_
 defaults:
-  - tiny_win3060
+  - small
 
 model:
   feature_enhancer:
@@ -14,5 +14,11 @@ model:
       enable: true
       channel_gate_reduction: 4
       use_residual: true
+
+dataset:
+  train:
+    sampling: random
+    random:
+      weighted_sampling: false
 
 suffix: "-efm"

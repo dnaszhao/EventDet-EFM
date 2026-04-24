@@ -60,13 +60,13 @@ python train.py model=rnndet hardware.gpus=0 dataset=gen1x0.01_ss +experiment/ge
 
 ### 4.3 关键配置文件
 
-- 安装说明：[docs/install.md](./install.md)
-- 论文实验命令：[docs/benchmark.md](./benchmark.md)
-- 本机稳定训练配置：[config/experiment/gen1/tiny_win3060.yaml](../config/experiment/gen1/tiny_win3060.yaml)
-- 训练入口：[train.py](../train.py)
-- 验证入口：[val.py](../val.py)
-- 伪标签生成入口：[predict.py](../predict.py)
-- 视频可视化入口：[vis_pred.py](../vis_pred.py)
+- 安装说明：[Installation Guide](./install.md)
+- 论文实验命令：[Benchmark Guide](../experiments/benchmark.md)
+- 本机稳定训练配置：[config/experiment/gen1/tiny_win3060.yaml](../../config/experiment/gen1/tiny_win3060.yaml)
+- 训练入口：[train.py](../../train.py)
+- 验证入口：[val.py](../../val.py)
+- 伪标签生成入口：[predict.py](../../predict.py)
+- 视频可视化入口：[vis_pred.py](../../vis_pred.py)
 
 ## 5. 环境基线
 
@@ -296,7 +296,7 @@ python vis_pred.py model=rnndet dataset=gen1 dataset.path=./datasets/gen1/ check
 
 原因：
 
-- [`train.py`](../train.py) 会自动扫描实验目录里的最近 checkpoint
+- [`train.py`](../../train.py) 会自动扫描实验目录里的最近 checkpoint
 
 处置：
 

@@ -31,15 +31,16 @@ We design a novel self-training framework that pseudo-labels unannotated events 
 ## Install
 
 This codebase builds upon [RVT](https://github.com/uzh-rpg/RVT).
-Please refer to [install.md](./docs/install.md) for detailed instructions.
-If you want a practical runbook for local deployment, training, validation, and troubleshooting, please refer to [production-manual.md](./docs/production-manual.md).
+Please refer to [Installation Guide](./docs/guides/install.md) for detailed instructions.
+If you want a practical runbook for local deployment, training, validation, and troubleshooting, please refer to [Production Manual](./docs/guides/production-manual.md).
+All project documents are now centralized in [docs/README.md](./docs/README.md).
 
 ## Experiments
 
 **This codebase is tailored to [Slurm](https://slurm.schedmd.com/documentation.html) GPU clusters with preemption mechanism.**
 There are some functions in the code (e.g. auto-detect and load previous checkpoints) which you might not need.
 Please go through all fields marked with `TODO` in `train.py` in case there is any conflict with your environment.
-To reproduce the results in the paper, please refer to [benchmark.md](docs/benchmark.md).
+To reproduce the results in the paper, please refer to [Benchmark and Reproduction Commands](./docs/experiments/benchmark.md).
 
 ## Citation
 
